@@ -1,2 +1,6 @@
 server:
   port: 8085
+
+logging:
+  file:
+    name: logs/demo-app.log

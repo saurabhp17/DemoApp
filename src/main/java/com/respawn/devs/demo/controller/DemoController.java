@@ -6,6 +6,7 @@ import com.respawn.devs.demo.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class DemoController {
         log.info("run-multiple-threads API called");
 
         for(int i=0; i<10; i++) {
-            demoService.runAsyncMethod(i);
+            demoService.runAsyncMethod(i, MDC.get("traceId"));
         }
         return "Success in calling multithreaded API";
     }
@@ -58,6 +59,5 @@ public class DemoController {
                 new User(2, "bbb"),
                 new User(3, "ccc")).collect(Collectors.toList());
     }
-
 
 }

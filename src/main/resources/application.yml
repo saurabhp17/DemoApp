@@ -2,5 +2,22 @@ server:
   port: 8085
 
 logging:
+  level:
+    org:
+      hibernate: WARN
+      springframework: WARN
+    com:
+      respawn:
+        dev:
+          demo: INFO
+    root: INFO
   file:
     name: logs/demo-app.log
+  logback:
+    rollingpolicy:
+      max-history: 10
+      max-file-size: 10MB
+  pattern:
+    console: "%d %-5level [%thread] |TraceId=%X{traceId}| %logger : %msg%n"
+    file: "%d %-5level [%thread] |TraceId=%X{traceId}| %logger : %msg%n"
+    rolling-file-name: "${LOG_FILE}.%d{yyyy-MM-dd}.%i"

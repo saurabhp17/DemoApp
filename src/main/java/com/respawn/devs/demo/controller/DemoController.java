@@ -1,10 +1,7 @@
 package com.respawn.devs.demo.controller;
 
 import com.respawn.devs.demo.DemoApplication;
-import com.respawn.devs.demo.config.ESConfig;
-import com.respawn.devs.demo.entity.MetadataIndex;
 import com.respawn.devs.demo.entity.User;
-//import com.respawn.devs.demo.repository.MetadataRepository;
 import com.respawn.devs.demo.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -12,10 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -26,8 +20,8 @@ public class DemoController {
 
     Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
-    @Autowired
-    ESConfig esConfig;
+//    @Autowired
+//    ESConfig esConfig;
 
     @Autowired
     private DemoService demoService;
@@ -45,20 +39,20 @@ public class DemoController {
         return "Success in calling multithreaded API";
     }
 
-    @GetMapping(value = "/saveUser")
-    public String saveUser() {
-        log.info("saveUser to elastic API called");
-        log.info("ESConfig: "+esConfig.config());
-
-        MetadataIndex metadataIndex = new MetadataIndex();
-        metadataIndex.setCreatedDate(LocalDate.now());
-        metadataIndex.setUuid(UUID.randomUUID().toString());
-        metadataIndex.setCreatedTimeStamp(LocalDateTime.now().toString());
-
-//        metadataRepository.save(metadataIndex);
-
-        return "Success";
-    }
+//    @GetMapping(value = "/saveUser")
+//    public String saveUser() {
+//        log.info("saveUser to elastic API called");
+//        log.info("ESConfig: "+esConfig.config());
+//
+//        MetadataIndex metadataIndex = new MetadataIndex();
+//        metadataIndex.setCreatedDate(LocalDate.now());
+//        metadataIndex.setUuid(UUID.randomUUID().toString());
+//        metadataIndex.setCreatedTimeStamp(LocalDateTime.now().toString());
+//
+////        metadataRepository.save(metadataIndex);
+//
+//        return "Success";
+//    }
 
     @GetMapping("/getUser/{id}")
     public User getUserById(@PathVariable int id){

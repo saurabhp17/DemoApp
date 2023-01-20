@@ -20,14 +20,8 @@ public class DemoController {
 
     Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
-//    @Autowired
-//    ESConfig esConfig;
-
     @Autowired
     private DemoService demoService;
-
-//    @Autowired
-//    MetadataRepository metadataRepository;
 
     @GetMapping(value = "/run-multiple-threads")
     public String runMultiThreadedMethod() throws InterruptedException {
@@ -38,21 +32,6 @@ public class DemoController {
         }
         return "Success in calling multithreaded API";
     }
-
-//    @GetMapping(value = "/saveUser")
-//    public String saveUser() {
-//        log.info("saveUser to elastic API called");
-//        log.info("ESConfig: "+esConfig.config());
-//
-//        MetadataIndex metadataIndex = new MetadataIndex();
-//        metadataIndex.setCreatedDate(LocalDate.now());
-//        metadataIndex.setUuid(UUID.randomUUID().toString());
-//        metadataIndex.setCreatedTimeStamp(LocalDateTime.now().toString());
-//
-////        metadataRepository.save(metadataIndex);
-//
-//        return "Success";
-//    }
 
     @GetMapping("/getUser/{id}")
     public User getUserById(@PathVariable int id){
